@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="picsum_picture">picsum picture</string>
+    <string name="like_button">like button</string>
+    <string name="author_text">Author: %1$s</string>
+    <string name="retry_button_text">Retry</string>
+    <string name="error_message_text">Oops loading error</string>
+    <string name="empty_state">No data(</string>
 </resources>
