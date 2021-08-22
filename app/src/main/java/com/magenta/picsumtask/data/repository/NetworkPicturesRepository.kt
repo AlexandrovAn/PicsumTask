@@ -3,8 +3,11 @@ package com.magenta.picsumtask.data.repository
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.magenta.picsumtask.domain.entities.Picture
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class NetworkPicturesRepository : PagingSource<Int, Picture>() {
+@Singleton
+class NetworkPicturesRepository @Inject constructor() : PagingSource<Int, Picture>() {
     override fun getRefreshKey(state: PagingState<Int, Picture>): Int? {
         val anchorPosition = state.anchorPosition ?: return null
         val page = state.closestPageToPosition(anchorPosition) ?: return null

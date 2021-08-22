@@ -1,5 +1,9 @@
 package com.magenta.picsumtask.data.repository
 
-class LikedPicturesRepository {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class LikedPicturesRepository @Inject constructor() {
 
 }
