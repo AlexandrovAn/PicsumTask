@@ -10,24 +10,9 @@ import com.magenta.picstask.R
 import com.magenta.picstask.databinding.ListItemBinding
 import com.magenta.picsumtask.domain.entities.Picture
 
-class ListAdapter :
-    PagingDataAdapter<Picture, ListAdapter.PictureViewHolder>(
-        diffCallback
-    ) {
+class ListAdapter : PagingDataAdapter<Picture, ListAdapter.PictureViewHolder>(diffCallback) {
 
     var clickListener: ((Picture) -> Unit)? = null
-
-    override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
-        val item = getItem(position)
-        item ?: return
-        Glide.with(holder.binding.root)
-            .load(item.url)
-            .into(holder.binding.pictureIv)
-        holder.binding.apply {
-            authorTv.text = root.context.resources.getString(R.string.author_text, item.author)
-            if (item.isLiked) likeButton.setImageResource(R.drawable.favorite_baseline)
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PictureViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -40,6 +25,17 @@ class ListAdapter :
             }
         }
         return holder
+    }
+
+    override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
+        val item = getItem(position)
+        item ?: return
+
+        holder.binding.apply {
+            Glide.with(root).load(item.url).into(pictureIv)
+            authorTv.text = root.context.resources.getString(R.string.author_text, item.author)
+            if (item.isLiked) likeButton.setImageResource(R.drawable.favorite_baseline)
+        }
     }
 
     class PictureViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)

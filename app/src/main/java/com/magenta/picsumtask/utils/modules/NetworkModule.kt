@@ -1,6 +1,7 @@
 package com.magenta.picsumtask.utils.modules
 
 import com.magenta.picsumtask.data.api.PicsumService
+import com.magenta.picsumtask.data.repository.RandomPicturesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
