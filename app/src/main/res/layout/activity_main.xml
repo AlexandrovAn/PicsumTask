@@ -14,13 +14,14 @@
         app:layout_constraintBottom_toTopOf="@id/main_fc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/secondTextColor" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fc"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:name="com.magenta.picsumtask.presentation.ui.RandomPicturesListFragment"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,27 +2,27 @@ package com.magenta.picsumtask.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.magenta.picsumtask.domain.entities.Picture
-import com.magenta.picsumtask.presentation.source.LikedPicturesSource
-import com.magenta.picsumtask.presentation.source.RandomPicturesSource
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
+import com.magenta.picsumtask.domain.usecases.GetUseCase
+import com.magenta.picsumtask.domain.usecases.LikePictureUseCase
+import com.magenta.picsumtask.presentation.paging.PagerHelper
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel(
-    private val randomPicturesRepo: RandomPicturesSource,
-    private val likedPicturesRepo: LikedPicturesSource
+class MainViewModel @Inject constructor(
+    private val likePictureUseCase: LikePictureUseCase,
+    private val getUseCase: GetUseCase<Picture>,
 ) : ViewModel() {
 
-    val randomNetworkPictures: Flow<PagingData<Picture>> = Pager(
-        config = PagingConfig(pageSize = 6, enablePlaceholders = true, maxSize = 100)
-    ) { randomPicturesRepo }
+    val pictures = PagerHelper
+        .getPager(getUseCase::loadData)
         .flow
-        .flowOn(Dispatchers.IO)
-        .cachedIn(viewModelScope)
+
+    fun likeAction(picture: Picture, onFinish: () -> Unit) {
+        viewModelScope.launch {
+            likePictureUseCase.likePicture(picture)
+            onFinish()
+        }
+    }
 
 }

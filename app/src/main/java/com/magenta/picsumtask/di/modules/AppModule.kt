@@ -1,4 +1,4 @@
-package com.magenta.picsumtask.utils.modules
+package com.magenta.picsumtask.di.modules
 
 import android.app.Application
 import android.content.Context

@@ -2,17 +2,20 @@ package com.magenta.picsumtask.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.magenta.picsumtask.presentation.source.LikedPicturesSource
-import com.magenta.picsumtask.presentation.source.RandomPicturesSource
-import javax.inject.Singleton
+import com.magenta.picsumtask.domain.entities.Picture
+import com.magenta.picsumtask.domain.usecases.GetUseCase
+import com.magenta.picsumtask.domain.usecases.LikePictureUseCase
+import javax.inject.Inject
 
-@Singleton
-class MainViewModelFactory(
-    private val networkPicturesRepository: RandomPicturesSource,
-    private val likedPicturesRepository: LikedPicturesSource
-) : ViewModelProvider.Factory{
+class MainViewModelFactory @Inject constructor(
+    private val likedPictureUseCase: LikePictureUseCase,
+    private val getUseCase: GetUseCase<Picture>
+) : ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        @Suppress
-        return MainViewModel(networkPicturesRepository,likedPicturesRepository) as T
+        return MainViewModel(
+            likedPictureUseCase,
+            getUseCase
+        ) as T
     }
 }

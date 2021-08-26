@@ -34,9 +34,10 @@ class ListAdapter : PagingDataAdapter<Picture, ListAdapter.PictureViewHolder>(di
         holder.binding.apply {
             Glide.with(root).load(item.url).into(pictureIv)
             authorTv.text = root.context.resources.getString(R.string.author_text, item.author)
-            if (item.isLiked) likeButton.setImageResource(R.drawable.favorite_baseline)
+            likeButton.setImageResource(if (item.isLiked) R.drawable.favorite_baseline else R.drawable.favorite_border)
         }
     }
+
 
     class PictureViewHolder(val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root)
 

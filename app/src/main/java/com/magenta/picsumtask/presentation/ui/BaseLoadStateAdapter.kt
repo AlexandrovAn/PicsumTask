@@ -11,7 +11,10 @@ import com.magenta.picstask.databinding.LoadStateBinding
 class BaseLoadStateAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<BaseLoadStateAdapter.LoadStateViewHolder>() {
 
-    class LoadStateViewHolder(val binding: LoadStateBinding) : RecyclerView.ViewHolder(binding.root)
+    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
+        val binding = LoadStateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return LoadStateViewHolder(binding)
+    }
 
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) {
         with(holder.binding) {
@@ -25,8 +28,5 @@ class BaseLoadStateAdapter(private val retry: () -> Unit) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {
-        val binding = LoadStateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return LoadStateViewHolder(binding)
-    }
+    class LoadStateViewHolder(val binding: LoadStateBinding) : RecyclerView.ViewHolder(binding.root)
 }

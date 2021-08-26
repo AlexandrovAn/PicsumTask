@@ -6,4 +6,7 @@
     <string name="retry_button_text">Retry</string>
     <string name="error_message_text">Oops loading error</string>
     <string name="empty_state">No data(</string>
+    <string name="toolbar_name">picsum app</string>
+    <string name="favorite_toolbar_name">favourite</string>
+    <string name="favorite_pictures_menu_title">favorite pictures</string>
 </resources>
