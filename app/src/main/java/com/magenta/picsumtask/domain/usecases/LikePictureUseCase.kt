@@ -7,6 +7,7 @@ import javax.inject.Inject
 class LikePictureUseCase @Inject constructor(
     private val likedPicturesRepository: FavouritePicturesRepository
 ) {
+
     suspend fun likePicture(picture: Picture) {
         when (picture.isLiked) {
             true -> {

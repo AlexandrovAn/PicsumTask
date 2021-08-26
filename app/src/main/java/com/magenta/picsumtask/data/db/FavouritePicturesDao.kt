@@ -5,6 +5,7 @@ import com.magenta.picsumtask.data.entities.EntityPicture
 
 @Dao
 interface FavouritePicturesDao {
+
     @Query("SELECT * FROM LIKED_TABLE LIMIT :pageSize OFFSET ((:page-1)*:pageSize)")
     suspend fun getAll(page: Int, pageSize: Int): List<EntityPicture>
 
@@ -19,5 +20,4 @@ interface FavouritePicturesDao {
 
     @Delete
     suspend fun deletePicture(picture: EntityPicture)
-
 }

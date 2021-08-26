@@ -11,6 +11,7 @@ class MainViewModelFactory @Inject constructor(
     private val likedPictureUseCase: LikePictureUseCase,
     private val getUseCase: GetUseCase<Picture>
 ) : ViewModelProvider.Factory {
+
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return MainViewModel(

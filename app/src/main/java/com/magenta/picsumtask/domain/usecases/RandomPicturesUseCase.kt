@@ -11,6 +11,7 @@ class RandomPicturesUseCase @Inject constructor(
     private val randomPicturesRepository: RandomPicturesRepository,
     private val cacheRepository: CacheRepository,
 ) : GetUseCase<Picture> {
+
     override suspend fun loadData(page: Int) = withContext(Dispatchers.IO) {
         cacheRepository.getCache(page)
             ?: getPicturesFromRepo(page)
@@ -20,6 +21,5 @@ class RandomPicturesUseCase @Inject constructor(
         return randomPicturesRepository.getPictures(page).also {
             cacheRepository.saveCache(page, it)
         }
-
     }
 }

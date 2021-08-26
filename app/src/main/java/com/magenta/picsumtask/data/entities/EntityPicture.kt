@@ -4,7 +4,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.magenta.picsumtask.domain.entities.Picture
 
-
 @Entity(tableName = "liked_table")
 data class EntityPicture(
     @PrimaryKey(autoGenerate = false)

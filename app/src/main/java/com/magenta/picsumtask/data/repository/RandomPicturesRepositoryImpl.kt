@@ -20,5 +20,4 @@ class RandomPicturesRepositoryImpl @Inject constructor(
             dao.getMatch(networkPicturesList.map { it.id })
         )
     }
-
 }

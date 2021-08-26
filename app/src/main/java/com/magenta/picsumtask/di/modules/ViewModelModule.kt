@@ -11,5 +11,4 @@ interface ViewModelModule {
 
     @Binds
     fun mainViewModelFactory(mainViewModelFactory: MainViewModelFactory): ViewModelProvider.Factory
-
 }

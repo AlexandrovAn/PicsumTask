@@ -57,7 +57,12 @@ abstract class BaseListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val pictureAdapter = ListAdapter()
+        val pictureAdapter = ListAdapter().apply {
+            clickListener = {
+                viewModel.likeAction(it) { refresh() }
+            }
+        }
+
         with(binding) {
             mainRecycler.adapter = pictureAdapter.withLoadStateFooter(
                 footer = BaseLoadStateAdapter { pictureAdapter.retry() }
@@ -77,11 +82,5 @@ abstract class BaseListFragment : Fragment() {
                 }
             }
         }
-
-        pictureAdapter.clickListener = {
-            viewModel.likeAction(it) { pictureAdapter.refresh() }
-        }
-
     }
-
 }

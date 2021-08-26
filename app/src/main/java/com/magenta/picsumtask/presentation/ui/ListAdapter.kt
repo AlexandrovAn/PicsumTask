@@ -32,7 +32,7 @@ class ListAdapter : PagingDataAdapter<Picture, ListAdapter.PictureViewHolder>(di
         item ?: return
 
         holder.binding.apply {
-            Glide.with(root).load(item.url).into(pictureIv)
+            Glide.with(root).load(item.url).placeholder(R.drawable.placeholder).into(pictureIv)
             authorTv.text = root.context.resources.getString(R.string.author_text, item.author)
             likeButton.setImageResource(if (item.isLiked) R.drawable.favorite_baseline else R.drawable.favorite_border)
         }

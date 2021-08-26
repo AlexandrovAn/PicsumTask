@@ -11,6 +11,7 @@ import com.magenta.picsumtask.data.entities.EntityPicture
     version = 3
 )
 abstract class FavouritePicturesDatabase : RoomDatabase() {
+
     abstract fun likedPicturesDao(): FavouritePicturesDao
 
     companion object {
@@ -24,5 +25,4 @@ abstract class FavouritePicturesDatabase : RoomDatabase() {
             .fallbackToDestructiveMigration()
             .build()
     }
-
 }

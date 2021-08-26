@@ -13,6 +13,7 @@ import javax.inject.Inject
 class LikedPicturesRepositoryImpl @Inject constructor(
     private val dao: FavouritePicturesDao
 ) : FavouritePicturesRepository {
+
     override suspend fun addPicture(picture: Picture) = withContext(Dispatchers.IO) {
         dao.insertPicture(picture.toEntity())
     }
@@ -24,5 +25,4 @@ class LikedPicturesRepositoryImpl @Inject constructor(
     override suspend fun getSavedPictures(page: Int) = withContext(Dispatchers.IO) {
         dao.getAll(page, PAGE_SIZE).map { it.toPicture() }
     }
-
 }

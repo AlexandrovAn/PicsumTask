@@ -13,7 +13,6 @@ class App : Application() {
     lateinit var randomPicturesComponent: RandomPicturesComponent
     lateinit var favouritePicturesComponent: FavouritePicturesComponent
 
-
     override fun onCreate() {
         super.onCreate()
         dataComponent = DaggerDataComponent.builder()

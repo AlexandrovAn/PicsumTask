@@ -5,6 +5,7 @@ import com.magenta.picsumtask.domain.usecases.GetUseCase
 import com.magenta.picsumtask.domain.usecases.LikePictureUseCase
 
 interface FeatureProvider {
+
     val likeUseCase: LikePictureUseCase
     val getUseCase: GetUseCase<Picture>
 }

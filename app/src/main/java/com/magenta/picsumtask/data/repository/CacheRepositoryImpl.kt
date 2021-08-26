@@ -24,5 +24,4 @@ class CacheRepositoryImpl @Inject constructor(
             )
         }
     }
-
 }
